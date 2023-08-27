@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int x) {
+        this->data = x;
+        this->next = NULL;
+    }
+};
+
+void insertattail(Node* &tail, int d) {
+    Node* temp2 = new Node(d);
+    tail->next = temp2;
+    tail = temp2;
+}
+
+void printlist(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    cout << "Traversal :" << endl;
+
+    Node* head = new Node(10);
+    Node* tail = head; // Initialize tail to point to the same node as head
+
+    printlist(head);
+
+    insertattail(tail, 20);
+    printlist(head);
+    insertattail(tail, 30);
+    printlist(head);
+
+    return 0;
+}
