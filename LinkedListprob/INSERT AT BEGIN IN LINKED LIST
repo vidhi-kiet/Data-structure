@@ -1,0 +1,60 @@
+*******************************************************************************/
+INSERT AT BEGIN IN LINKED LIST
+
+
+#include <iostream>
+
+using namespace std;
+class Node
+{
+  public:
+  int data;
+  Node* next;
+  
+  Node(int x)
+  {
+    this->data=x;
+    this->next=NULL;
+      
+  }
+  
+};
+
+void insertatbegin(Node* &head,int d)
+{
+    Node *newn=new Node(d);
+    newn->next =head;
+    head=newn;
+}
+
+void printlist(Node *head)
+{
+    Node *temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+    
+}
+
+int main()
+{
+    cout<<"Traversal :"<<endl;
+    
+    Node *head=new Node(10);
+    insertatbegin(head,20);
+    printlist(head);
+    insertatbegin(head,30);
+    printlist(head);
+    insertatbegin(head,40);
+    printlist(head);
+
+
+
+    
+    
+
+    return 0;
+}
