@@ -16,7 +16,7 @@ public:
 void insertattail(Node* &tail, int d) {
     Node* temp2 = new Node(d);
     tail->next = temp2;
-    tail = temp2;
+    tail = temp2; // Update tail to point to the new node
 }
 
 void printlist(Node* head) {
@@ -31,15 +31,21 @@ void printlist(Node* head) {
 int main() {
     cout << "Traversal :" << endl;
 
+    // Initialize head and tail with the first node
     Node* head = new Node(10);
     Node* tail = head; // Initialize tail to point to the same node as head
 
-    printlist(head);
+    printlist(head); // Print the initial list with one node
 
+    // Insert a new node at the tail and update tail pointer
     insertattail(tail, 20);
-    printlist(head);
+    printlist(head); // Print the list after the first insertion
+
+    // Insert another node at the tail and update tail pointer
     insertattail(tail, 30);
-    printlist(head);
+    printlist(head); // Print the list after the second insertion
+
+    // ... More insertions and printlist calls can be added here
 
     return 0;
 }
