@@ -1,0 +1,86 @@
+longest common prefix
+
+
+string commonPrefix(vector<string>& arr,int n){
+	//Write your code here
+	
+	sort(arr.begin(),arr.end());
+	string first=arr[0];
+	string last=arr[n-1];
+	string res="";
+	for(int i=0;i<first.size();i++)
+	{
+		if(first[i]!=last[i])
+		{
+			break;
+		}
+		res=res+first[i];
+	}
+    
+   if (res.empty()) {
+        return "-1"; // Return -1 if no common prefix is found
+    }
+    
+    return res;
+
+}
+
+
+_______________________________________________________________________
+
+2.ANAGRAMA
+
+
+#include <bits/stdc++.h> 
+bool areAnagram(string &str1, string &str2){
+    // Write your code here.
+    int n=str1.size();
+    if(str1.size()!=str2.size())
+    {
+        return false;
+    }
+    int count[256]={0};
+    for(int i=0;i<n;i++)
+    {
+         count[str1[i]]++;
+         count[str2[i]]--;
+    }
+    for(int i=0;i<256;i++)
+    {
+        if(count[i]!=0)
+        {
+            return false;
+        }
+    }
+    return true;
+
+-------------------------------------------------------------------------------------
+
+
+
+bool areIsomorphic(string &s1, string &s2)
+{
+    // Write your code her
+    if (s1.size() != s2.size()) {
+        return false;
+    }
+
+    int m1[256]= {0};
+    int m2[256]= {0};
+
+
+    // Swap characters in temp1.
+    for (int i = 0; i < s1.size(); i++) {
+        if(!m1[s1[i]] && !m2[s2[i]])
+        {
+            m1[s1[i]]=s2[i];
+            m2[s2[i]]=s1[i];
+        }
+        else if(m1[s1[i]]!=s2[i] || m2[s2[i]]!=s1[i])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
