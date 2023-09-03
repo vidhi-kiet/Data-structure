@@ -1,0 +1,77 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class Node
+{
+    public:
+    
+    int val;
+    Node* next;
+    
+    Node(int data)
+    {
+        val=data;
+        next=NULL;
+    }
+};
+
+void insertatst(Node* &head,int data)
+{
+    Node* newnode=new Node(data);
+    newnode->next=head;
+    head=newnode;
+}
+
+void insertattail(Node* &head,int data)
+{
+    Node* temp1=new Node(data);
+    if(head==NULL)
+    {
+        head=temp1;
+    }
+    Node* curr=head;
+    while(curr->next!=NULL)
+    {
+        curr=curr->next;
+    }
+    curr->next=temp1;
+    
+}
+
+
+void display(Node* &head)
+{
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->val<<"->";
+        temp=temp->next;
+        
+    }
+    cout<<"NULL"<<endl;
+    
+}
+
+int main()
+{
+    cout<<"singly linked list :"<<endl;
+    Node* head=NULL;
+    insertatst(head,1);
+    display(head);
+    insertatst(head,2);
+    display(head);
+    insertattail(head,3);
+    display(head);
+
+
+    return 0;
+}
