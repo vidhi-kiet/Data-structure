@@ -1,0 +1,113 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class Node
+{
+    public:
+    int data;
+    Node* next;
+    
+    Node(int val)
+    {
+        data=val;
+        next=NULL;
+    }
+    
+};
+
+void insertatbe(Node* &head,int val)
+{
+    Node* newnode= new Node(val);
+    newnode->next=head;
+    head=newnode;
+}
+
+void display(Node* &head)
+{
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+        
+    }
+    cout<<"NULL"<<endl;
+}
+
+void deleteathead(Node* &head)
+{
+    Node* temp=head;
+    head=head->next;
+    free(temp);
+}
+void deleteatend(Node* &head)
+{
+    Node* secondlast=head;
+    
+    while(secondlast->next->next!=NULL)
+    {
+        secondlast=secondlast->next;
+        
+    }
+    Node* temp=secondlast->next;
+    secondlast->next=NULL;
+    free(temp);
+    
+}
+
+void deleteatpos(Node* &head,int pos)
+{
+    if(pos==0)
+    {
+        deleteathead(head);
+        return;
+    }
+    Node* prev=head;
+    int currpos=0;
+    
+    while(currpos!=pos-1)
+    {
+        prev=prev->next;
+        currpos++;
+    }
+    // prev point to prev node of node which is to be deleteathea
+    Node* temp=prev->next;
+    prev->next=prev->next->next;
+    free(temp);
+}
+
+int main()
+{
+    Node* head=NULL;
+    insertatbe(head,1);
+    display(head);
+    insertatbe(head,2);
+    display(head);
+    insertatbe(head,3);
+    display(head);
+    insertatbe(head,4);
+    display(head);
+    deleteathead(head);
+    display(head);
+    deleteatend(head);
+    display(head);
+     insertatbe(head,5);
+    display(head); 
+    insertatbe(head,6);
+    display(head);
+    deleteatpos(head,2);
+     display(head);
+    
+    
+
+    return 0;
+}
